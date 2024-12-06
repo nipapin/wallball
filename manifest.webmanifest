@@ -1,0 +1,28 @@
+{
+    "theme_color": "#8936FF",
+    "background_color": "#141414",
+    "icons": [
+        {
+            "purpose": "maskable",
+            "sizes": "512x512",
+            "src": "icon512_maskable.png",
+            "type": "image/png"
+        },
+        {
+            "purpose": "any",
+            "sizes": "512x512",
+            "src": "icon512_rounded.png",
+            "type": "image/png"
+        }
+    ],
+    "orientation": "portrait",
+    "display": "standalone",
+    "dir": "auto",
+    "lang": "ru",
+    "name": "The Wallball",
+    "short_name": "WALLBALL",
+    "start_url": "https://nipapin.github.io/wallball/",
+    "scope": "https://nipapin.github.io/wallball/",
+    "description": "Wallball game",
+    "id": "https://nipapin.github.io/wallball/"
+}
