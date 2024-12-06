@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://cdn.jsdelivr.net/npm/p5@1.11.1/lib/p5.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/addons/p5.sound.min.js"></script>
+		<link rel="stylesheet" href="styles.css" />
+		<title>Test Bot</title>
+	</head>
+	<body>
+		<button type="button" class="action" id="menu">В меню</button>
+		<div id="pick-modificator">
+			<div class="pick-modificator-container">
+				<p>Select Modificator</p>
+				<div class="options">
+					<button type="button" class="action">-</button>
+					<button type="button" class="action">-</button>
+				</div>
+			</div>
+		</div>
+		<div id="game-menu">
+			<p class="score">Score: 0</p>
+			<img src="./assets/ball.png" alt="ball" id="ball" />
+			<div class="buttons">
+				<button type="button" class="action" id="equip">Арсенал</button>
+				<button type="button" class="action" id="play">Играть</button>
+				<button type="button" class="action" id="settings">Настройки</button>
+			</div>
+		</div>
+		<div id="levels">
+			<p>LEVELS</p>
+			<div id="levels-cards"></div>
+		</div>
+		<div id="game-over">
+			<p class="game-over-text">ИГРА ОКОНЧЕНА</p>
+			<button type="button" class="action" id="continue">Продолжить</button>
+		</div>
+		<script src="classes/World.js"></script>
+		<script src="classes/Trajectory.js"></script>
+		<script src="classes/Ball.js"></script>
+		<script src="classes/Block.js"></script>
+		<script src="classes/Visual.js"></script>
+		<script src="app.js"></script>
+		<script src="menu.js"></script>
+	</body>
+</html>
