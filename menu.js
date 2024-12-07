@@ -14,7 +14,6 @@ function setupPickBall() {
     container.scrollTo({ left: firstItem.offsetLeft, behavior: 'smooth' })
     container.addEventListener('scrollend', () => {
         const nearestItem = [...items].sort((a, b) => distance(a.offsetLeft, container.scrollLeft) - distance(b.offsetLeft, container.scrollLeft))[0];
-        console.log(nearestItem.innerText);
         activeBall = ballPerson[nearestItem.innerText];
         world.balls = [activeBall];
     })

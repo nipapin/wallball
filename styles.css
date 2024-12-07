@@ -14,8 +14,6 @@ body {
 	transition: 0.5s;
 }
 
-
-
 #game-menu {
 	z-index: 2;
 	background-color: #000014;
@@ -130,6 +128,7 @@ body {
 	z-index: 1;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 8px;
+	overflow: auto;
 }
 
 .level-card {

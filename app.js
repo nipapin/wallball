@@ -6,6 +6,8 @@ let ballPerson;
 
 let activeBall;
 
+p5.disableFriendlyErrors = true;
+
 function preload() {
     world = new World();
     world.ballTexture = loadImage('assets/default.png');
