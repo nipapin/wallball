@@ -3,13 +3,36 @@ let levels;
 let gameOverScreen;
 let pickModificator;
 
+const distance = (a, b) => {
+    return Math.abs(a - b);
+}
+
+function setupPickBall() {
+    const container = document.querySelector('.select-ball');
+    const items = container.querySelectorAll('.ball-container');
+    const firstItem = items[1];
+    container.scrollTo({ left: firstItem.offsetLeft, behavior: 'smooth' })
+    container.addEventListener('scrollend', () => {
+        const nearestItem = [...items].sort((a, b) => distance(a.offsetLeft, container.scrollLeft) - distance(b.offsetLeft, container.scrollLeft))[0];
+        console.log(nearestItem.innerText);
+        activeBall = ballPerson[nearestItem.innerText];
+        world.balls = [activeBall];
+    })
+
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     menu = document.getElementById('game-menu');
     levels = document.getElementById('levels');
     gameOverScreen = document.getElementById('game-over');
     pickModificator = document.getElementById('pick-modificator');
+    setTimeout(() => {
+        document.body.style.filter = 'none';
+    }, 500)
 
-
+    setTimeout(() => {
+        setupPickBall();
+    }, 1000)
 
     const menuButton = document.getElementById('menu')
     const playButton = document.getElementById('play');
@@ -65,6 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
         card.classList.add('level-card');
         card.innerText = level.name;
         card.addEventListener('click', () => {
+            loop();
             world.level = { ...level };
             world.initEmptyGrid();
             world.generateRandomGrid();

@@ -6,7 +6,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/p5@1.11.1/lib/p5.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.1/addons/p5.sound.min.js"></script>
 		<link rel="manifest" href="manifest.webmanifest" />
-		<link rel="apple-touch-icon" href="icon512_maskable.png">
+		<link rel="apple-touch-icon" href="icon512_maskable.png" />
 		<link rel="stylesheet" href="styles.css" />
 		<title>Test Bot</title>
 	</head>
@@ -23,7 +23,26 @@
 		</div>
 		<div id="game-menu">
 			<p class="score">Score: 0</p>
-			<img src="./assets/ball.png" alt="ball" id="ball" />
+			<div class="select-ball">
+				<div class="ball-container"></div>
+				<div class="ball-container">
+					<img src="./assets/default.png" alt="ball" id="ball" />
+					<p class="ball-name">Default</p>
+				</div>
+				<div class="ball-container">
+					<img src="./assets/doubler.png" alt="ball" id="ball" />
+					<p class="ball-name">Doubler</p>
+				</div>
+				<div class="ball-container">
+					<img src="./assets/ghost.png" alt="ball" id="ball" />
+					<p class="ball-name">Ghost</p>
+				</div>
+				<div class="ball-container">
+					<img src="./assets/ghost.png" alt="ball" id="ball" />
+					<p class="ball-name">CHAOS</p>
+				</div>
+				<div class="ball-container"></div>
+			</div>
 			<div class="buttons">
 				<button type="button" class="action" id="equip">Арсенал</button>
 				<button type="button" class="action" id="play">Играть</button>

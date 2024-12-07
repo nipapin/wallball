@@ -12,6 +12,8 @@ class World {
         this.floor = height - 100;
         this.level = null;
         this.gameboard = [];
+        this.modificators = ["Молния", "Огонь +", 'Огонь X', 'Молния Линия'];
+        this.pickModificatorShown = false;
     }
 
     initEmptyGrid() {
@@ -59,5 +61,37 @@ class World {
         return random(initGrid);
     }
 
-    calculateBlockPosition() { }
+    checkAllBallsStopped() {
+        const allBallsStopped = this.balls.every(ball => ball.stopped);
+
+        if (allBallsStopped && !this.pickModificatorShown && this.hitsToNextModificator < 1) {
+            this.pickModificatorShown = true;
+            this.showModificatorWindow();
+        }
+    }
+
+
+    showModificatorWindow() {
+        noLoop(); // Останавливаем игру
+        pickModificator.style.display = 'flex';
+
+        let option_1 = random(this.balls[0].availableModificators);
+        this.balls[0].availableModificators.splice(this.balls[0].availableModificators.indexOf(option_1), 1);
+
+        let option_2 = random(this.balls[0].availableModificators);
+        const buttons = [...pickModificator.querySelectorAll('button')];
+        buttons[0].innerText = option_1;
+        buttons[1].innerText = option_2;
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                this.balls[0].addModificator(button.innerText);
+                this.hitsToNextModificator = this.level.blocksPerWave;
+                pickModificator.style.display = 'none';
+                this.pickModificatorShown = false; // Сбрасываем флаг
+                loop(); // Возобновляем игру
+            });
+        });
+    }
+
 }

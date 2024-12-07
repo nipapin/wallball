@@ -21,5 +21,41 @@ class Block {
         text(this.health, this.position.x, this.position.y);
     }
 
+    getNeighbours(cross) {
+        if (cross) {
+            const topleft = world.blocks.find(block => block.x === this.x - 1 && block.y === this.y - 1);
+            const topright = world.blocks.find(block => block.x === this.x + 1 && block.y === this.y - 1);
+            const bottomright = world.blocks.find(block => block.x === this.x + 1 && block.y === this.y + 1);
+            const bottomleft = world.blocks.find(block => block.x === this.x - 1 && block.y === this.y + 1);
+            return [topleft, topright, bottomright, bottomleft].filter(Boolean);
+        }
+        const left = world.blocks.find(block => block.x === this.x - 1 && block.y === this.y);
+        const right = world.blocks.find(block => block.x === this.x + 1 && block.y === this.y);
+        const top = world.blocks.find(block => block.x === this.x && block.y === this.y - 1);
+        const bottom = world.blocks.find(block => block.x === this.x && block.y === this.y + 1);
+        return [left, right, top, bottom].filter(Boolean);
+    }
+
+    checkHealth() {
+        if (this.health < 1) {
+            world.blocks.splice(world.blocks.indexOf(this), 1);
+            world.returnGoodSpot({ x: this.x, y: this.y });
+        }
+    }
+
+    getSide(ball) {
+        let side = 'left';
+        if (ball.x > this.position.x + this.w / 2) {
+            side = 'right';
+        }
+        if (ball.y > this.position.y + this.w / 2) {
+            side = 'bottom';
+        }
+        if (ball.y < this.position.y - this.w / 2) {
+            side = 'top';
+        }
+        return side;
+    }
+
 }
 
